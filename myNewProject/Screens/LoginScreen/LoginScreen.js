@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
   TextInput,
@@ -14,15 +13,12 @@ import {
   View,
 } from "react-native";
 
-const image = require("./add.png");
-
-export default function RegistrationScreen() {
+export default function LoginScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
 
   const initialState = {
     email: "",
     password: "",
-    login: "",
   };
 
   const [state, setState] = useState(initialState);
@@ -43,35 +39,15 @@ export default function RegistrationScreen() {
         <View
           style={{
             ...styles.container,
-            height: isShowKeyboard ? "90%" : "90%",
+            height: isShowKeyboard ? "70%" : "75%",
           }}
         >
-          <View style={styles.pfotoContainer}>
-            <TouchableOpacity style={styles.addbutton} activeOpacity={0.5}>
-              <ImageBackground
-                source={image}
-                style={{ width: "100%", height: "100%" }}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.title}>Registration</Text>
-
-          <TextInput
-            style={styles.input}
-            placeholder="Log in"
-            onFocus={() => setIsShowKeyboard(true)}
-            value={state.login}
-            // onChangeText={(text) => setLogin(text)}
-            onChangeText={(value) =>
-              setState((prevState) => ({ ...prevState, login: value }))
-            }
-          />
+          <Text style={styles.title}>Login</Text>
           <TextInput
             style={styles.input}
             placeholder="E-mail address"
             onFocus={() => setIsShowKeyboard(true)}
             value={state.email}
-            // onChangeText={(text) => setEmail(text)}
             onChangeText={(value) =>
               setState((prevState) => ({ ...prevState, email: value }))
             }
@@ -81,7 +57,6 @@ export default function RegistrationScreen() {
             placeholder="Password"
             secureTextEntry={true}
             value={state.password}
-            // onChangeText={(text) => setPassword(text)}
             onChangeText={(value) =>
               setState((prevState) => ({ ...prevState, password: value }))
             }
@@ -100,7 +75,7 @@ export default function RegistrationScreen() {
             activeOpacity={0.7}
             style={styles.btn}
           >
-            <Text style={styles.btnText}>Register</Text>
+            <Text style={styles.btnText}>Log in</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -109,7 +84,7 @@ export default function RegistrationScreen() {
             onFocus={keyBoardHide}
           >
             <Text style={styles.loginLinkText}>
-              Already have an account? Log in
+              Don't have an account? Register
             </Text>
           </TouchableOpacity>
         </View>
@@ -125,7 +100,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderTopRightRadius: 25,
     borderTopLeftRadius: 25,
-    height: 549,
+    height: 489,
   },
   wrapper: {
     justifyContent: "flex-end",
